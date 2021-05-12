@@ -6,6 +6,15 @@ import java.security.NoSuchAlgorithmException;
 import javax.xml.bind.DatatypeConverter;
 
 public class EncryptUtil {
+
+    /* クラス(static)メソッドのgetPasswordEncrypt()メソッド宣言
+     *
+     * 戻り値:String
+     * 引数1:String
+     * 引数2:String
+     *
+     */
+
     public static String getPasswordEncrypt(String plain_p, String pepper) {
         String ret = "";
 
