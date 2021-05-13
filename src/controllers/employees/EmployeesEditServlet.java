@@ -31,14 +31,15 @@ public class EmployeesEditServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        // EntityManager型のem変数を宣言し、DBUnitのStaticメソッド呼び出して初期化
         EntityManager em = DBUtil.createEntityManager();
 
+        // requestから送られたidを所持しているEmployeeオブジェクトをEmployee型のe変数に代入
         Employee e = em.find(Employee.class, Integer.parseInt(request.getParameter("id")));
 
-        em.close();
+        em.close(); // emを閉じる（リソースの解放）
 
-        request.setAttribute("employee", e);
+        request.setAttribute("employee", e);    // requestにe変数をリクエストスコープにセットする
         request.setAttribute("_token", request.getSession().getId());
         request.getSession().setAttribute("employee_id", e.getId());
 
